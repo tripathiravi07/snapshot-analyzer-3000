@@ -1,14 +1,5 @@
 # snapshot-analyzer-3000
-An EC2 snapshot project
-
-Editeds
-afnafka
-
-afkas;kf
-anfalsn'a
-asndasfnas'afkasf
-asf
-as
-f
-asf
-asfafa
+An EC2 snapshot project for Listing instances
+python .\example.py <command> <--project="Project">
+*command* list,start,stop
+*project* is optional
