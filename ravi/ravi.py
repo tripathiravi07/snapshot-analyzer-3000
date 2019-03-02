@@ -99,11 +99,18 @@ def create_snapshots(project):
     "Create Snapshots"
     instances = filter_instances(project)
     for i in instances:
-        print("Stopping instance for snapshot creation -> {0}".format(i))
         i.stop()
+        print("Stopping instance before snapshot creation -> {0}".format(i))
+        i.wait_until_stopped()
+
         for v in i.volumes.all():
             print("Creating Snapshot of {0}".format(v))
             v.create_snapshot(Description="Snapshot is created by SnapshotAnaluzer 3000")
+
+        i.start()
+        print("Starting instance after snapshot creation -> {0}".format(i))
+        i.wait_until_running()
+    print("Job Done!")
     return
 if __name__ == '__main__':
     cli()
